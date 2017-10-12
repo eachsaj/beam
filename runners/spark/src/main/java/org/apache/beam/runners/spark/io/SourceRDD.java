@@ -272,6 +272,16 @@ public class SourceRDD {
       return index;
     }
 
+    // CHECKSTYLE.OFF: MethodNameCheck
+    /**
+     * This is a method for compatibility with the new mandatory equals
+     * contract for {@link Partition} on Spark 2.
+     * See https://issues.apache.org/jira/browse/SPARK-6429
+     */
+    public boolean org$apache$spark$Partition$$super$equals(Object obj) {
+      return equals(obj);
+    }
+
     @Override
     public int hashCode() {
       return 41 * (41 + rddId) + index;
